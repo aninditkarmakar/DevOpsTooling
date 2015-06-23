@@ -184,8 +184,9 @@
                   "publisher":"Microsoft.Compute",
                   "type":"CustomScriptExtension",
                   "typeHandlerVersion":"1.4",
-                  "settings":{  
-                     "fileUris": "https://raw.githubusercontent.com/aninditkarmakar/DevOpsTooling/master/AzureResourceGroup/Scripts/FirstScript.ps1"
+                  "settings":{
+                    "fileUris": "https://raw.githubusercontent.com/aninditkarmakar/DevOpsTooling/master/AzureResourceGroup/Scripts/FirstScript.ps1",
+                    "commandToExecute": "[concat('Setup-System -adminUserName ', parameters('VMAdminUsername'))]"
                   },
                   "protectedSettings":{  
 
