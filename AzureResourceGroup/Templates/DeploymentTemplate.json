@@ -115,15 +115,7 @@
       "VNetworkPrefix":"10.0.0.0/16",
       "VNetworkSubnet1Name":"Subnet-1",
       "VNetworkSubnet1Prefix":"10.0.0.0/24",
-      "DNSPrivateIP":"10.0.0.4",
-      "ak-dnsvmImagePublisher":"MicrosoftWindowsServer",
-      "ak-dnsvmImageOffer":"WindowsServer",
-      "ak-dnsvmOSDiskName":"ak-dnsvmOSDisk",
-      "ak-dnsvmVmSize":"Standard_D1",
-      "ak-dnsvmVnetID":"[resourceId('Microsoft.Network/virtualNetworks', parameters('VNetworkName'))]",
-      "ak-dnsvmSubnetRef":"[concat(variables('ak-dnsvmVnetID'), '/subnets/', variables('VNetworkSubnet1Name'))]",
-      "ak-dnsvmStorageAccountContainerName":"vhds",
-      "ak-dnsvmNicName":"[concat(parameters('ak-dnsvmName'), 'NetworkInterface')]"
+      "DNSPrivateIP":"10.0.0.4"
    },
    "resources":[  
       {  
@@ -204,7 +196,7 @@
                   "value":"[parameters('DNSVMSize')]"
                },
                "VMAdminUsername":{  
-                  "value":"[parameters('DNSVMAdminUsername')]"
+                  "value":"[parameters('DNSVMAdminUserName')]"
                },
                "VMAdminPassword":{  
                   "value":"[parameters('DNSVMAdminPassword')]"

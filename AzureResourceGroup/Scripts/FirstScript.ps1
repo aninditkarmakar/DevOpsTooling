@@ -89,5 +89,3 @@ function Setup-System
     # Allow File and Printer Sharing Firewall rule
     # ToDo
 }
-
-Setup-System;
