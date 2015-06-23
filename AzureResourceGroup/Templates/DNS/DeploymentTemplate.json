@@ -75,7 +75,7 @@
     "VMImageOffer": "WindowsServer",
     "VMOSDiskName": "DNSVMOSDisk",
     "VMStorageAccountContainerName": "vhds",
-    "SetupScriptConfigurationFile": "https://raw.githubusercontent.com/aninditkarmakar/DevOpsTooling/master/AzureResourceGroup/Scripts/FirstScript.ps1",
+    "SetupScriptConfigurationFile": "https://github.com/aninditkarmakar/DevOpsTooling/raw/master/AzureResourceGroup/Scripts/FirstScript.zip",
     "SetupScriptConfigurationFunction": "FirstScript.ps1\\Setup-System"
   },
   "resources": [
