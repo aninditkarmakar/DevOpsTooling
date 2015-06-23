@@ -1,6 +1,24 @@
 ﻿{
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "West US"
+    },
+    "storageAccountName": {
+      "value": "akarmstorageaccount"
+    },
+    "VNetworkName": {
+      "value": "ak-arm-network"
+    },
+    "DNSDeploymentJsonURI": {
+      "value": "https://raw.githubusercontent.com/aninditkarmakar/DevOpsTooling/master/AzureResourceGroup/Templates/DNS/DeploymentTemplate.json"
+    },
+    "DNSVMAdminUserName": {
+      "value": "ak-admin"
+    },
+    "DNSVMAdminPassword": {
+      "value": "Hello@123"
     }
+  }
 }
