@@ -204,7 +204,7 @@
           }
         },
         {
-          "name": "DNSSetup",
+          "name": "[concat(variables('VMName'),'/DNSSetup')]",
           "type": "Microsoft.Compute/virtualMachines/extensions",
           "location": "[parameters('DNSLocation')]",
           "apiVersion": "2015-05-01-preview",
