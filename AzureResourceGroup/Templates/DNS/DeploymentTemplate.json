@@ -63,6 +63,9 @@
     },
     "VMStorageAccountName": {
       "type": "string"
+    },
+    "DomainName": {
+      "type": "string"
     }
   },
   "variables": {
@@ -76,7 +79,10 @@
     "VMOSDiskName": "DNSVMOSDisk",
     "VMStorageAccountContainerName": "vhds",
     "SetupScriptConfigurationFile": "https://github.com/aninditkarmakar/DevOpsTooling/raw/master/AzureResourceGroup/Scripts/FirstScript.zip",
-    "SetupScriptConfigurationFunction": "FirstScript.ps1\\Setup-System"
+    "SetupScriptConfigurationFunction": "FirstScript.ps1\\SetupInitial",
+    "DNSSetupConfigurationFile": "https://github.com/aninditkarmakar/DevOpsTooling/raw/master/AzureResourceGroup/Scripts/DNSConfig.zip",
+    "DNSSetupConfigurationFunction": "DNSConfig.ps1\\DNSConfig"
+
   },
   "resources": [
     {
@@ -192,6 +198,41 @@
               "configurationFunction": "[variables('SetupScriptConfigurationFunction')]",
               "properties": {
                 "adminUserName": "[parameters('VMAdminUsername')]"
+              }
+            },
+            "protectedSettings": { }
+          }
+        },
+        {
+          "name": "DNSSetup",
+          "type": "extensions",
+          "location": "[parameters('DNSLocation')]",
+          "apiVersion": "2015-05-01-preview",
+          "dependsOn": [
+            "[concat('Microsoft.Compute/virtualMachines/', variables('VMName'))]",
+            "extensions/SetupScript"
+          ],
+          "tags": {
+            "displayName": "DNSSetup"
+          },
+          "properties": {
+            "publisher": "Microsoft.Powershell",
+            "type": "DSC",
+            "typeHandlerVersion": "1.7",
+            "settings": {
+              "modulesUrl": "[variables('DNSSetupConfigurationFile')]",
+              "sasToken": "",
+              "configurationFunction": "[variables('DNSSetupConfigurationFunction')]",
+              "properties": {
+                "DomainName": "[parameters('DomainName')]",
+                "DomainAdminUsername": "[parameters('VMAdminUsername')]",
+                "DomainAdminPassword": "[parameters('VMAdminPassword')]",
+                "ConfigurationData": {
+                  "AllNodes": {
+                    "NodeName": "localhost",
+                    "PSDscAllowPlainTextPassword": true
+                  }
+                }
               }
             },
             "protectedSettings": { }

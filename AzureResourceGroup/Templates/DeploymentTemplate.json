@@ -1,216 +1,222 @@
-﻿{  
-   "$schema":"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-   "contentVersion":"1.0.0.0",
-   "parameters":{  
-      "location":{  
-         "type":"string",
-         "allowedValues":[  
-            "East US",
-            "West US",
-            "West Europe",
-            "East Asia",
-            "South East Asia"
-         ]
-      },
-      "storageAccountName":{  
-         "type":"string"
-      },
-      "storageAccountType":{  
-         "type":"string",
-         "defaultValue":"Standard_LRS",
-         "allowedValues":[  
-            "Standard_LRS",
-            "Standard_GRS",
-            "Standard_ZRS"
-         ]
-      },
-      "storageAccountLocation":{  
-         "type":"string",
-         "defaultValue":"[parameters('location')]",
-         "allowedValues":[  
-            "East US",
-            "West US",
-            "West Europe",
-            "East Asia",
-            "South East Asia"
-         ]
-      },
-      "VNetworkLocation":{  
-         "type":"string",
-         "defaultValue":"[parameters('location')]",
-         "allowedValues":[  
-            "East US",
-            "West US",
-            "West Europe",
-            "East Asia",
-            "South East Asia"
-         ]
-      },
-      "VNetworkName":{  
-         "type":"string"
-      },
-      "DNSDeploymentJsonURI":{  
-         "type":"string"
-      },
-      "DNSLocation":{  
-         "type":"string",
-         "defaultValue":"[parameters('location')]",
-         "allowedValues":[  
-            "East US",
-            "West US",
-            "West Europe",
-            "East Asia",
-            "South East Asia"
-         ]
-      },
-      "DNSVMSize":{  
-         "type":"string",
-         "defaultValue":"Standard_A5",
-         "allowedValues":[  
-            "Basic_A0",
-            "Basic_A1",
-            "Basic_A2",
-            "Basic_A3",
-            "Basic_A4",
-            "Standard_A0",
-            "Standard_A1",
-            "Standard_A2",
-            "Standard_A3",
-            "Standard_A4",
-            "Standard_A5",
-            "Standard_A6",
-            "Standard_A7",
-            "Standard_A8",
-            "Standard_A9",
-            "Standard_A10",
-            "Standard_A11",
-            "Standard_D1",
-            "Standard_D2",
-            "Standard_D3",
-            "Standard_D4",
-            "Standard_D11",
-            "Standard_D12",
-            "Standard_D13",
-            "Standard_D14"
-         ]
-      },
-      "DNSVMAdminUserName":{  
-         "type":"string"
-      },
-      "DNSVMAdminPassword":{  
-         "type":"securestring"
-      },
-      "DNSVMWindowsOSVersion":{  
-         "type":"string",
-         "defaultValue":"2012-R2-Datacenter",
-         "allowedValues":[  
-            "2008-R2-SP1",
-            "2012-Datacenter",
-            "2012-R2-Datacenter",
-            "Windows-Server-Technical-Preview"
-         ]
-      }
-   },
-   "variables":{  
-      "VNetworkPrefix":"10.0.0.0/16",
-      "VNetworkSubnet1Name":"Subnet-1",
-      "VNetworkSubnet1Prefix":"10.0.0.0/24",
-      "DNSPrivateIP":"10.0.0.4"
-   },
-   "resources":[  
-      {  
-         "name":"[parameters('storageAccountName')]",
-         "type":"Microsoft.Storage/storageAccounts",
-         "location":"[parameters('storageAccountLocation')]",
-         "apiVersion":"2015-05-01-preview",
-         "dependsOn":[  
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "allowedValues": [
+        "East US",
+        "West US",
+        "West Europe",
+        "East Asia",
+        "South East Asia"
+      ]
+    },
+    "storageAccountName": {
+      "type": "string"
+    },
+    "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS"
+      ]
+    },
+    "storageAccountLocation": {
+      "type": "string",
+      "defaultValue": "[parameters('location')]",
+      "allowedValues": [
+        "East US",
+        "West US",
+        "West Europe",
+        "East Asia",
+        "South East Asia"
+      ]
+    },
+    "VNetworkLocation": {
+      "type": "string",
+      "defaultValue": "[parameters('location')]",
+      "allowedValues": [
+        "East US",
+        "West US",
+        "West Europe",
+        "East Asia",
+        "South East Asia"
+      ]
+    },
+    "VNetworkName": {
+      "type": "string"
+    },
+    "DNSDeploymentJsonURI": {
+      "type": "string"
+    },
+    "DNSLocation": {
+      "type": "string",
+      "defaultValue": "[parameters('location')]",
+      "allowedValues": [
+        "East US",
+        "West US",
+        "West Europe",
+        "East Asia",
+        "South East Asia"
+      ]
+    },
+    "DNSVMSize": {
+      "type": "string",
+      "defaultValue": "Standard_A5",
+      "allowedValues": [
+        "Basic_A0",
+        "Basic_A1",
+        "Basic_A2",
+        "Basic_A3",
+        "Basic_A4",
+        "Standard_A0",
+        "Standard_A1",
+        "Standard_A2",
+        "Standard_A3",
+        "Standard_A4",
+        "Standard_A5",
+        "Standard_A6",
+        "Standard_A7",
+        "Standard_A8",
+        "Standard_A9",
+        "Standard_A10",
+        "Standard_A11",
+        "Standard_D1",
+        "Standard_D2",
+        "Standard_D3",
+        "Standard_D4",
+        "Standard_D11",
+        "Standard_D12",
+        "Standard_D13",
+        "Standard_D14"
+      ]
+    },
+    "DNSVMAdminUserName": {
+      "type": "string"
+    },
+    "DNSVMAdminPassword": {
+      "type": "securestring"
+    },
+    "DNSVMWindowsOSVersion": {
+      "type": "string",
+      "defaultValue": "2012-R2-Datacenter",
+      "allowedValues": [
+        "2008-R2-SP1",
+        "2012-Datacenter",
+        "2012-R2-Datacenter",
+        "Windows-Server-Technical-Preview"
+      ]
+    },
+    "DNSDomainName": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "VNetworkPrefix": "10.0.0.0/16",
+    "VNetworkSubnet1Name": "Subnet-1",
+    "VNetworkSubnet1Prefix": "10.0.0.0/24",
+    "DNSPrivateIP": "10.0.0.4"
+  },
+  "resources": [
+    {
+      "name": "[parameters('storageAccountName')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "location": "[parameters('storageAccountLocation')]",
+      "apiVersion": "2015-05-01-preview",
+      "dependsOn": [
 
-         ],
-         "tags":{  
-            "displayName":"StorageAccount"
-         },
-         "properties":{  
-            "accountType":"[parameters('storageAccountType')]"
-         }
+      ],
+      "tags": {
+        "displayName": "StorageAccount"
       },
-      {  
-         "name":"[parameters('VNetworkName')]",
-         "type":"Microsoft.Network/virtualNetworks",
-         "location":"[parameters('VNetworkLocation')]",
-         "apiVersion":"2015-05-01-preview",
-         "dependsOn":[  
-            "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]"
-         ],
-         "tags":{  
-            "displayName":"V-Network"
-         },
-         "properties":{  
-            "addressSpace":{  
-               "addressPrefixes":[  
-                  "[variables('VNetworkPrefix')]"
-               ]
-            },
-            "dhcpOptions":{  
-               "dnsServers":[  
-                  "10.0.0.4",
-                  "8.8.8.8"
-               ]
-            },
-            "subnets":[  
-               {  
-                  "name":"[variables('VNetworkSubnet1Name')]",
-                  "properties":{  
-                     "addressPrefix":"[variables('VNetworkSubnet1Prefix')]"
-                  }
-               }
-            ]
-         }
-      },
-      {  
-         "name":"DNSDeployment",
-         "type":"Microsoft.Resources/deployments",
-         "apiVersion":"2015-01-01",
-         "dependsOn":[  
-            "[concat('Microsoft.Network/virtualNetworks/', parameters('VNetworkName'))]"
-         ],
-         "properties":{  
-            "mode":"Incremental",
-            "templateLink":{  
-               "uri":"[parameters('DNSDeploymentJsonURI')]",
-               "contentVersion":"1.0.0.0"
-            },
-            "parameters":{  
-               "DNSLocation":{  
-                  "value":"[parameters('DNSLocation')]"
-               },
-               "VNetID":{  
-                  "value":"[resourceId('Microsoft.Network/virtualNetworks', parameters('VNetworkName'))]"
-               },
-               "SubnetName":{  
-                  "value":"[variables('VNetworkSubnet1Name')]"
-               },
-               "PrivateIP":{  
-                  "value":"[variables('DNSPrivateIP')]"
-               },
-               "VMSize":{  
-                  "value":"[parameters('DNSVMSize')]"
-               },
-               "VMAdminUsername":{  
-                  "value":"[parameters('DNSVMAdminUserName')]"
-               },
-               "VMAdminPassword":{  
-                  "value":"[parameters('DNSVMAdminPassword')]"
-               },
-               "VMWindowsOSVersion":{  
-                  "value":"[parameters('DNSVMWindowsOSVersion')]"
-               },
-               "VMStorageAccountName":{  
-                  "value":"[parameters('StorageAccountName')]"
-               }
-            }
-         }
+      "properties": {
+        "accountType": "[parameters('storageAccountType')]"
       }
-   ],
+    },
+    {
+      "name": "[parameters('VNetworkName')]",
+      "type": "Microsoft.Network/virtualNetworks",
+      "location": "[parameters('VNetworkLocation')]",
+      "apiVersion": "2015-05-01-preview",
+      "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]"
+      ],
+      "tags": {
+        "displayName": "V-Network"
+      },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[variables('VNetworkPrefix')]"
+          ]
+        },
+        "dhcpOptions": {
+          "dnsServers": [
+            "10.0.0.4",
+            "8.8.8.8"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[variables('VNetworkSubnet1Name')]",
+            "properties": {
+              "addressPrefix": "[variables('VNetworkSubnet1Prefix')]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "DNSDeployment",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', parameters('VNetworkName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[parameters('DNSDeploymentJsonURI')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "DNSLocation": {
+            "value": "[parameters('DNSLocation')]"
+          },
+          "VNetID": {
+            "value": "[resourceId('Microsoft.Network/virtualNetworks', parameters('VNetworkName'))]"
+          },
+          "SubnetName": {
+            "value": "[variables('VNetworkSubnet1Name')]"
+          },
+          "PrivateIP": {
+            "value": "[variables('DNSPrivateIP')]"
+          },
+          "VMSize": {
+            "value": "[parameters('DNSVMSize')]"
+          },
+          "VMAdminUsername": {
+            "value": "[parameters('DNSVMAdminUserName')]"
+          },
+          "VMAdminPassword": {
+            "value": "[parameters('DNSVMAdminPassword')]"
+          },
+          "VMWindowsOSVersion": {
+            "value": "[parameters('DNSVMWindowsOSVersion')]"
+          },
+          "VMStorageAccountName": {
+            "value": "[parameters('StorageAccountName')]"
+          },
+          "DomainName": {
+            "value": "[parameters('DNSDomainName')]"
+          }
+        }
+      }
+    }
+  ],
    "outputs":{  
 
    }

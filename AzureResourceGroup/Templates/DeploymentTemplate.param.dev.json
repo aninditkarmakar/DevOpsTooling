@@ -19,6 +19,9 @@
     },
     "DNSVMAdminPassword": {
       "value": "Hello@123"
+    },
+    "DNSDomainName": {
+      "value": "akdomain.com"
     }
   }
 }
