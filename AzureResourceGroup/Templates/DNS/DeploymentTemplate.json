@@ -209,8 +209,7 @@
           "location": "[parameters('DNSLocation')]",
           "apiVersion": "2015-05-01-preview",
           "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('VMName'))]",
-            "[resourceId('Microsoft.Compute/virtualMachines/extensions', concat(variables('VMName'),'/SetupScript'))]"
+            "[concat('Microsoft.Compute/virtualMachines/', variables('VMName'))]"          
           ],
           "tags": {
             "displayName": "DNSSetup"
