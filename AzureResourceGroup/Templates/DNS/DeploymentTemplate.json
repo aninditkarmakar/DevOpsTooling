@@ -198,13 +198,7 @@
                 "adminUserName": "[parameters('VMAdminUsername')]",
                 "DomainName": "[parameters('DomainName')]",
                 "DomainAdminUsername": "[parameters('VMAdminUsername')]",
-                "DomainAdminPassword": "[parameters('VMAdminPassword')]",
-                "ConfigurationData": {
-                  "AllNodes": {
-                    "NodeName": "localhost",
-                    "PSDscAllowPlainTextPassword": true
-                  }
-                }
+                "DomainAdminPassword": "[parameters('VMAdminPassword')]"
               }
             },
             "protectedSettings": { }
