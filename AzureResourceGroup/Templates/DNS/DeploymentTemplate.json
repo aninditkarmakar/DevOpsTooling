@@ -78,10 +78,8 @@
     "VMImageOffer": "WindowsServer",
     "VMOSDiskName": "DNSVMOSDisk",
     "VMStorageAccountContainerName": "vhds",
-    "SetupScriptConfigurationFile": "https://github.com/aninditkarmakar/DevOpsTooling/raw/master/AzureResourceGroup/Scripts/FirstScript.zip",
-    "SetupScriptConfigurationFunction": "FirstScript.ps1\\SetupInitial",
-    "DNSSetupConfigurationFile": "https://github.com/aninditkarmakar/DevOpsTooling/raw/master/AzureResourceGroup/Scripts/DNSConfig.zip",
-    "DNSSetupConfigurationFunction": "DNSConfig.ps1\\DNSConfig"
+    "SetupScriptConfigurationFile": "https://github.com/aninditkarmakar/DevOpsTooling/raw/master/AzureResourceGroup/Scripts/DNSScript.zip",
+    "SetupScriptConfigurationFunction": "DNSScript.ps1\\SetupInitial"
 
   },
   "resources": [
@@ -197,32 +195,7 @@
               "sasToken": "",
               "configurationFunction": "[variables('SetupScriptConfigurationFunction')]",
               "properties": {
-                "adminUserName": "[parameters('VMAdminUsername')]"
-              }
-            },
-            "protectedSettings": { }
-          }
-        },
-        {
-          "name": "[concat(variables('VMName'),'/DNSSetup')]",
-          "type": "Microsoft.Compute/virtualMachines/extensions",
-          "location": "[parameters('DNSLocation')]",
-          "apiVersion": "2015-05-01-preview",
-          "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('VMName'))]"          
-          ],
-          "tags": {
-            "displayName": "DNSSetup"
-          },
-          "properties": {
-            "publisher": "Microsoft.Powershell",
-            "type": "DSC",
-            "typeHandlerVersion": "1.7",
-            "settings": {
-              "modulesUrl": "[variables('DNSSetupConfigurationFile')]",
-              "sasToken": "",
-              "configurationFunction": "[variables('DNSSetupConfigurationFunction')]",
-              "properties": {
+                "adminUserName": "[parameters('VMAdminUsername')]",
                 "DomainName": "[parameters('DomainName')]",
                 "DomainAdminUsername": "[parameters('VMAdminUsername')]",
                 "DomainAdminPassword": "[parameters('VMAdminPassword')]",
