@@ -35,6 +35,7 @@
     <Content Include="Templates\DeploymentTemplate.json" />
     <None Include="Scripts\FirstScript.ps1" />
     <None Include="Scripts\DNSConfig.ps1" />
+    <None Include="Scripts\DNSScript.ps1" />
     <None Include="Templates\DeploymentTemplate.param.dev.json" />
   </ItemGroup>
   <ItemGroup>

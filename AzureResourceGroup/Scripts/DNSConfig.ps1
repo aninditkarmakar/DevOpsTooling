@@ -1,11 +1,11 @@
 Configuration DNSConfig
 { 
-     param
+	param
     ( 
-        [string]$NodeName ='localhost',  
-        [Parameter(Mandatory=$true)][string]$DomainName,
-        [Parameter(Mandatory=$true)][string]$DomainAdminUsername,
-        [Parameter(Mandatory=$true)][System.Security.SecureString]$DomainAdminPassword
+		[string]$NodeName ='localhost',  
+		[Parameter(Mandatory=$true)][string]$DomainName,
+		[Parameter(Mandatory=$true)][string]$DomainAdminUsername,
+		[Parameter(Mandatory=$true)][System.Security.SecureString]$DomainAdminPassword
     ) 
         
     #Import the required DSC Resources  
