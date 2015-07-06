@@ -1,0 +1,30 @@
+{
+	"subscription_id": "1eadh-1y31hekad-h1eiduq",
+	"admin_username": "user101",
+	"admin_password": "Hello@123",
+	"sql_server": {
+		"db_admin_username": "dbadmin",
+		"db_admin_password": "Hello@123"
+	},
+	"test_environment": {
+		"count": 5,
+		"vm_size": "Standard_A5",
+		"configuration_id": 2,
+		"modules_url": null,
+		"configuration_function": null
+	},
+	"build_environment": {
+		"count": 6,
+		"vm_size": "Standard_A5",
+		"configuration_id": 3,
+		"modules_url": null,
+		"configuration_function": null
+	},
+	"dev_environment": {
+		"count": 4,
+		"vm_size": "Standard_A6",
+		"configuration_id": 4,
+		"modules_url": null,
+		"configuration_function": null
+	}
+}

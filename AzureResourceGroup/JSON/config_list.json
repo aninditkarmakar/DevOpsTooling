@@ -1,0 +1,30 @@
+{
+    "data": [
+        {
+            "config_id": 1,
+            "name": "Small Dev Environment",
+            "description": "A very basic testing environment",
+            "parameters": {
+                "VMSize": "Standard_A5",
+                "VMImagePublisher": "MicrosoftWindowsServer",
+                "VMImageOffer": "WindowsServer",
+                "VMImageSKU": "2012-R2-Datacenter",
+                "ModulesURL": "https://github.com/aninditkarmakar/DevOpsTooling/raw/master/AzureResourceGroup/Scripts/FirstScript.zip",
+                "ConfigurationFunction": "https://github.com/aninditkarmakar/DevOpsTooling/raw/master/AzureResourceGroup/Scripts/FirstScript.zip"
+            }
+        },
+        {
+            "config_id": 2,
+            "name": "Large Dev Environment",
+            "description": "A large dev environment",
+            "parameters": {
+                "VMSize": "Standard_A5",
+                "VMImagePublisher": "MicrosoftWindowsServer",
+                "VMImageOffer": "WindowsServer",
+                "VMImageSKU": "2012-R2-Datacenter",
+                "ModulesURL": "https://github.com/aninditkarmakar/DevOpsTooling/raw/master/AzureResourceGroup/Scripts/FirstScript.zip",
+                "ConfigurationFunction": "https://github.com/aninditkarmakar/DevOpsTooling/raw/master/AzureResourceGroup/Scripts/FirstScript.zip"
+            }
+        }
+    ]
+}
